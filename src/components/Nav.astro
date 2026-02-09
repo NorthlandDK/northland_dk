@@ -54,7 +54,7 @@ const links = [
 	.nav.scrolled,
 	.nav.menu-open {
 		background-color: var(--color-white);
-		box-shadow: 0 1px 8px rgba(15, 46, 36, 0.06);
+		box-shadow: 0 1px 0 rgba(15, 46, 36, 0.08); /* E: was 0 1px 8px — subtle 1px line instead of diffused shadow */
 	}
 
 	.nav-inner {
@@ -70,8 +70,13 @@ const links = [
 	/*  Logo                              */
 	/* ---------------------------------- */
 	.nav-logo img {
-		height: 2rem;
+		height: 2.25rem; /* A: was 2rem — ~12% larger default */
 		width: auto;
+		transition: height 0.3s ease;
+	}
+
+	.nav.scrolled .nav-logo img {
+		height: 2rem; /* A: shrink back on scroll */
 	}
 
 	/* ---------------------------------- */
@@ -98,7 +103,7 @@ const links = [
 		bottom: -4px;
 		left: 0;
 		width: 0;
-		height: 1.5px;
+		height: 1px; /* E: was 1.5px — thinner underline */
 		background-color: var(--color-gold);
 		transition: width 0.3s ease;
 	}
@@ -108,7 +113,7 @@ const links = [
 	}
 
 	.nav-link:hover::after {
-		width: 100%;
+		width: 70%; /* E: was 100% — shorter, more discreet */
 	}
 
 	/* ---------------------------------- */
