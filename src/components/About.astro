@@ -2,9 +2,11 @@
 const credentials = [
 	{ role: 'Bestyrelsesleder', org: 'Spar Nord Fonden', note: 'siden 2017' },
 	{ role: 'Bestyrelsesleder', org: 'Fonden Musikkens Hus', note: 'siden 2024' },
+	{ role: 'Bestyrelsesmedlem', org: 'Aalborg Forsyning A/S', note: 'siden 2026' },
+	{ role: 'Bestyrelsesmedlem', org: 'Port of Hirtshals', note: 'siden 2026' },
 	{ role: 'Professor', org: 'Aalborg University Business School' },
 	{ role: 'Professor II', org: 'NHH Bergen' },
-	{ role: 'Underviser', org: 'CBS Bestyrelsesuddannelserne' },
+	{ role: 'CBS Bestyrelsesuddannelserne', org: '(erhvervsfonde og finansielle virksomheder)' },
 	{ role: 'Ph.D.', org: 'Aalborg Universitet', note: '2004' },
 ];
 ---
@@ -27,6 +29,14 @@ const credentials = [
 				fokus på, hvordan strategisk governance og teknologisk transformation
 				kan styrke organisationers langsigtede konkurrenceevne.
 			</p>
+			<a
+				href="https://msdahl.net"
+				class="about-academic-link"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Se akademisk CV og publikationer
+			</a>
 		</div>
 
 		<div class="about-credentials reveal" style="--reveal-delay: 0.15s">
@@ -80,6 +90,36 @@ const credentials = [
 		font-size: 1.0625rem;
 		line-height: 1.75;
 		color: var(--color-text-light);
+	}
+
+	.about-academic-link {
+		position: relative;
+		display: inline-block;
+		align-self: flex-start;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--color-forest);
+		transition: color 0.2s ease;
+	}
+
+	.about-academic-link::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 0;
+		height: 1.5px;
+		background-color: var(--color-gold);
+		transition: width 0.3s ease;
+	}
+
+	.about-academic-link:hover {
+		color: var(--color-forest-deep);
+	}
+
+	.about-academic-link:hover::after {
+		width: 100%;
 	}
 
 	/* ---------------------------------- */
