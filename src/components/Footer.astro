@@ -7,14 +7,32 @@ const year = new Date().getFullYear();
 		<p class="footer-copyright">
 			&copy; {year} Northland Advice. Alle rettigheder forbeholdes.
 		</p>
-		<a
-			href="https://msdahl.com"
-			class="footer-link"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			msdahl.com
-		</a>
+		<div class="footer-links">
+			<a
+				href="https://northland.dk"
+				class="footer-link"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				northland.dk
+			</a>
+			<a
+				href="https://msdahl.net"
+				class="footer-link"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				msdahl.net
+			</a>
+			<a
+				href="https://msdahl.com"
+				class="footer-link"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				msdahl.com
+			</a>
+		</div>
 	</div>
 </footer>
 
@@ -35,6 +53,11 @@ const year = new Date().getFullYear();
 	.footer-copyright {
 		font-size: 0.8125rem;
 		color: var(--color-sage);
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 1.5rem;
 	}
 
 	.footer-link {
