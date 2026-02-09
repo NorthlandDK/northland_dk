@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Side ikke fundet — Northland Advice">
+	<section class="not-found">
+		<span class="section-label">404</span>
+		<h1>Side ikke fundet</h1>
+		<p>Den side, du leder efter, findes ikke eller er blevet flyttet.</p>
+		<a href={import.meta.env.BASE_URL + '/'} class="not-found-cta">Gå til forsiden</a>
+	</section>
+</Layout>
+
+<style>
+	.not-found {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.25rem;
+		min-height: 70vh;
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(160deg, var(--color-mist) 0%, var(--color-cream) 60%);
+	}
+
+	.not-found h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		color: var(--color-forest-deep);
+		letter-spacing: -0.02em;
+	}
+
+	.not-found p {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: var(--color-text-light);
+		max-width: 45ch;
+	}
+
+	.not-found-cta {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 0.5rem;
+		padding: 0.875rem 2rem;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--color-white);
+		background-color: var(--color-forest);
+		border-radius: 4px;
+		transition: background-color 0.25s ease, transform 0.25s ease;
+	}
+
+	.not-found-cta:hover {
+		background-color: var(--color-forest-deep);
+		transform: translateY(-1px);
+	}
+</style>

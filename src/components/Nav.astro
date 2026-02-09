@@ -38,38 +38,6 @@ const links = [
 	</div>
 </nav>
 
-<script>
-	const nav = document.querySelector('.nav') as HTMLElement;
-	const toggle = document.getElementById('nav-toggle') as HTMLButtonElement;
-	const links = document.getElementById('nav-links') as HTMLElement;
-
-	// Scroll: transparent → solid
-	function onScroll() {
-		nav.classList.toggle('scrolled', window.scrollY > 20);
-	}
-	window.addEventListener('scroll', onScroll, { passive: true });
-	onScroll();
-
-	// Mobile menu
-	toggle.addEventListener('click', () => {
-		const open = toggle.getAttribute('aria-expanded') === 'true';
-		toggle.setAttribute('aria-expanded', String(!open));
-		toggle.setAttribute('aria-label', open ? 'Åbn menu' : 'Luk menu');
-		links.classList.toggle('open');
-		nav.classList.toggle('menu-open');
-	});
-
-	// Close menu on anchor click
-	links.querySelectorAll('a').forEach((a) => {
-		a.addEventListener('click', () => {
-			toggle.setAttribute('aria-expanded', 'false');
-			toggle.setAttribute('aria-label', 'Åbn menu');
-			links.classList.remove('open');
-			nav.classList.remove('menu-open');
-		});
-	});
-</script>
-
 <style>
 	/* ---------------------------------- */
 	/*  Nav bar                           */

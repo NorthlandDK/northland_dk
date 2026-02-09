@@ -1,6 +1,7 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 interface Props {
 	title: string;
@@ -10,11 +11,12 @@ interface Props {
 
 const {
 	title,
-	description = 'Northland Advice — Strategisk rådgivning til virksomheder i vækst.',
-	ogImage = '/og-image.jpg',
+	description = 'Northland Advice — rådgivning om strategi, governance og AI i organisationer.',
+	ogImage = 'og.jpg',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(import.meta.env.BASE_URL + '/' + ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -22,27 +24,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
-		<link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.ico`} />
-		<meta name="generator" content={Astro.generator} />
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
 
+		<!-- Favicon -->
+		<link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.ico`} sizes="32x32" />
+		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+
+		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(ogImage, Astro.site)} />
+		<meta property="og:image" content={ogImageURL} />
 		<meta property="og:locale" content="da_DK" />
 
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
 		/>
+
+		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
 		<Nav />
@@ -50,202 +63,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			<slot />
 		</main>
 		<Footer />
+		<script src="../scripts/main.js"></script>
 	</body>
 </html>
-
-<style is:global>
-	/* ---------------------------------- */
-	/*  Custom properties                 */
-	/* ---------------------------------- */
-	:root {
-		/* Brand greens */
-		--color-forest-deep: #0f2e24;
-		--color-forest: #1a4a3a;
-		--color-forest-light: #2d6b52;
-		--color-sage: #5a8a72;
-		--color-sage-light: #7aaa92;
-
-		/* Neutrals */
-		--color-mist: #e8f0ec;
-		--color-cream: #fafbfa;
-		--color-white: #ffffff;
-
-		/* Text */
-		--color-charcoal: #1a1a1a;
-		--color-text: #2a2a2a;
-		--color-text-light: #5a5a5a;
-		--color-text-muted: #8a8a8a;
-
-		/* Accents */
-		--color-gold: #b8965a;
-		--color-gold-light: #d4b07a;
-
-		/* Typography */
-		--font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-		--font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-	}
-
-	/* ---------------------------------- */
-	/*  Reset                             */
-	/* ---------------------------------- */
-	*,
-	*::before,
-	*::after {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	html {
-		scroll-behavior: smooth;
-		-webkit-text-size-adjust: 100%;
-		-moz-text-size-adjust: 100%;
-		text-size-adjust: 100%;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-	}
-
-	img,
-	picture,
-	video,
-	canvas,
-	svg {
-		display: block;
-		max-width: 100%;
-	}
-
-	input,
-	button,
-	textarea,
-	select {
-		font: inherit;
-	}
-
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	ul,
-	ol {
-		list-style: none;
-	}
-
-	table {
-		border-collapse: collapse;
-	}
-
-	/* ---------------------------------- */
-	/*  Base typography                   */
-	/* ---------------------------------- */
-	body {
-		font-family: var(--font-body);
-		font-weight: 400;
-		font-size: 1rem;
-		line-height: 1.6;
-		color: var(--color-text);
-		background-color: var(--color-cream);
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: var(--font-heading);
-		font-weight: 600;
-		line-height: 1.2;
-		color: var(--color-charcoal);
-	}
-
-	h1 {
-		font-size: clamp(2.25rem, 5vw, 3.75rem);
-		font-weight: 700;
-		letter-spacing: -0.02em;
-	}
-
-	h2 {
-		font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-		letter-spacing: -0.01em;
-	}
-
-	h3 {
-		font-size: clamp(1.375rem, 2.5vw, 1.875rem);
-	}
-
-	h4 {
-		font-size: clamp(1.125rem, 2vw, 1.375rem);
-		font-weight: 500;
-	}
-
-	p {
-		max-width: 65ch;
-	}
-
-	strong {
-		font-weight: 600;
-	}
-
-	/* ---------------------------------- */
-	/*  Scroll offset for fixed nav       */
-	/* ---------------------------------- */
-	section[id] {
-		scroll-margin-top: 5rem;
-	}
-
-	/* ---------------------------------- */
-	/*  Shared section label              */
-	/* ---------------------------------- */
-	.section-label {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		font-family: var(--font-body);
-		font-size: 0.8125rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--color-gold);
-		margin-bottom: 0.25rem;
-	}
-
-	.section-label::before {
-		content: '';
-		display: block;
-		width: 2rem;
-		height: 1.5px;
-		background-color: var(--color-gold);
-	}
-
-	/* ---------------------------------- */
-	/*  Scroll reveal                     */
-	/* ---------------------------------- */
-	.reveal {
-		opacity: 0;
-		transform: translateY(20px);
-		transition:
-			opacity 0.6s ease,
-			transform 0.6s ease;
-		transition-delay: var(--reveal-delay, 0s);
-	}
-
-	.reveal.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.reveal {
-			opacity: 1;
-			transform: none;
-			transition: none;
-		}
-	}
-</style>
