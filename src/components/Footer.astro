@@ -1,0 +1,59 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+	<div class="footer-inner">
+		<p class="footer-copyright">
+			&copy; {year} Northland Advice. Alle rettigheder forbeholdes.
+		</p>
+		<a
+			href="https://msdahl.com"
+			class="footer-link"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			msdahl.com
+		</a>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background-color: var(--color-forest-deep);
+	}
+
+	.footer-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	.footer-copyright {
+		font-size: 0.8125rem;
+		color: var(--color-sage);
+	}
+
+	.footer-link {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-sage-light);
+		transition: color 0.2s ease;
+	}
+
+	.footer-link:hover {
+		color: var(--color-white);
+	}
+
+	@media (max-width: 768px) {
+		.footer-inner {
+			flex-direction: column;
+			gap: 0.75rem;
+			padding: 1.5rem;
+			text-align: center;
+		}
+	}
+</style>

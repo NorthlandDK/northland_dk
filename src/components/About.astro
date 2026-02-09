@@ -1,0 +1,159 @@
+---
+const credentials = [
+	{ role: 'Bestyrelsesleder', org: 'Spar Nord Fonden', note: 'siden 2017' },
+	{ role: 'Bestyrelsesleder', org: 'Fonden Musikkens Hus', note: 'siden 2024' },
+	{ role: 'Professor', org: 'Aalborg University Business School' },
+	{ role: 'Professor II', org: 'NHH Bergen' },
+	{ role: 'Underviser', org: 'CBS Bestyrelsesuddannelserne' },
+	{ role: 'Ph.D.', org: 'Aalborg Universitet', note: '2004' },
+];
+---
+
+<section class="about" id="about">
+	<div class="about-inner">
+		<div class="about-text reveal">
+			<span class="section-label">Om</span>
+			<h2 class="about-heading">Michael Slavensky Dahl</h2>
+			<p>
+				Med udgangspunkt i akademisk forskning inden for strategi og
+				organisationsteori forbinder Michael forskningsbaseret indsigt med
+				praktisk ledelseserfaring. Hans arbejde spænder fra bestyrelsesledelse
+				i store fonde til rådgivning om AI-implementering i komplekse
+				organisationer.
+			</p>
+			<p>
+				Som professor ved Aalborg University Business School og NHH Bergen
+				arbejder han i krydsfeltet mellem forskning og praksis — med særligt
+				fokus på, hvordan strategisk governance og teknologisk transformation
+				kan styrke organisationers langsigtede konkurrenceevne.
+			</p>
+		</div>
+
+		<div class="about-credentials reveal" style="--reveal-delay: 0.15s">
+			<h3 class="credentials-heading">Baggrund</h3>
+			<ul class="credentials-list">
+				{credentials.map((c) => (
+					<li class="credential">
+						<span class="credential-role">{c.role}</span>
+						<span class="credential-org">{c.org}</span>
+						{c.note && <span class="credential-note">{c.note}</span>}
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ---------------------------------- */
+	/*  Section                           */
+	/* ---------------------------------- */
+	.about {
+		background-color: var(--color-white);
+	}
+
+	.about-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Text column                       */
+	/* ---------------------------------- */
+	.about-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.about-heading {
+		font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+		color: var(--color-forest-deep);
+		letter-spacing: -0.015em;
+	}
+
+	.about-text p {
+		font-size: 1.0625rem;
+		line-height: 1.75;
+		color: var(--color-text-light);
+	}
+
+	/* ---------------------------------- */
+	/*  Credentials column                */
+	/* ---------------------------------- */
+	.about-credentials {
+		padding-top: 0.25rem;
+	}
+
+	.credentials-heading {
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+		margin-bottom: 1.5rem;
+	}
+
+	.credentials-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.credential {
+		display: flex;
+		flex-direction: column;
+		gap: 0.125rem;
+		padding: 1.125rem 0;
+		border-bottom: 1px solid var(--color-mist);
+	}
+
+	.credential:first-child {
+		padding-top: 0;
+	}
+
+	.credential:last-child {
+		border-bottom: none;
+	}
+
+	.credential-role {
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-forest);
+	}
+
+	.credential-org {
+		font-family: var(--font-heading);
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-charcoal);
+		line-height: 1.3;
+	}
+
+	.credential-note {
+		font-size: 0.8125rem;
+		color: var(--color-text-muted);
+		margin-top: 0.125rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Responsive                        */
+	/* ---------------------------------- */
+	@media (max-width: 1024px) {
+		.about-inner {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-inner {
+			padding: 4rem 1.5rem;
+		}
+	}
+</style>

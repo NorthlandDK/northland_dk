@@ -1,0 +1,238 @@
+---
+import logoSrc from '../assets/logo.png';
+---
+
+<section class="hero" id="hero">
+	<div class="hero-inner">
+		<div class="hero-content">
+			<span class="hero-label">Northland Advice</span>
+			<h1 class="hero-heading">
+				Strategi, governance og<br /><em>AI i organisationer</em>
+			</h1>
+			<p class="hero-description">
+				Vi hjælper virksomheder med at navigere kompleksitet — fra strategisk
+				rådgivning og governance til ansvarlig implementering af AI.
+			</p>
+			<a href="#contact" class="hero-cta">
+				Tag kontakt
+				<svg
+					class="hero-cta-arrow"
+					width="20"
+					height="20"
+					viewBox="0 0 20 20"
+					fill="none"
+					aria-hidden="true"
+				>
+					<path
+						d="M4 10h12m0 0l-4-4m4 4l-4 4"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</a>
+		</div>
+
+		<div class="hero-visual">
+			<img
+				src={logoSrc.src}
+				alt=""
+				class="hero-logo"
+				width="480"
+				height="480"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ---------------------------------- */
+	/*  Animation                         */
+	/* ---------------------------------- */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(1.5rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* ---------------------------------- */
+	/*  Section                           */
+	/* ---------------------------------- */
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		background: linear-gradient(160deg, var(--color-mist) 0%, var(--color-cream) 60%);
+	}
+
+	.hero-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 4rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 8rem 2rem 4rem;
+		width: 100%;
+	}
+
+	/* ---------------------------------- */
+	/*  Text column                       */
+	/* ---------------------------------- */
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	/* Label with gold line */
+	.hero-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-gold);
+		animation: fadeInUp 0.7s ease both;
+	}
+
+	.hero-label::before {
+		content: '';
+		display: block;
+		width: 2rem;
+		height: 1.5px;
+		background-color: var(--color-gold);
+	}
+
+	/* Heading */
+	.hero-heading {
+		font-size: clamp(2.5rem, 5.5vw, 4rem);
+		font-weight: 700;
+		line-height: 1.15;
+		letter-spacing: -0.025em;
+		color: var(--color-forest-deep);
+		animation: fadeInUp 0.7s ease 0.1s both;
+	}
+
+	.hero-heading em {
+		font-style: italic;
+		color: var(--color-forest);
+	}
+
+	/* Description */
+	.hero-description {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: var(--color-text-light);
+		max-width: 48ch;
+		animation: fadeInUp 0.7s ease 0.2s both;
+	}
+
+	/* CTA button */
+	.hero-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		align-self: flex-start;
+		padding: 0.875rem 2rem;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--color-white);
+		background-color: var(--color-forest);
+		border-radius: 4px;
+		transition: background-color 0.25s ease, transform 0.25s ease;
+		animation: fadeInUp 0.7s ease 0.3s both;
+	}
+
+	.hero-cta:hover {
+		background-color: var(--color-forest-deep);
+		transform: translateY(-1px);
+	}
+
+	.hero-cta-arrow {
+		transition: transform 0.25s ease;
+	}
+
+	.hero-cta:hover .hero-cta-arrow {
+		transform: translateX(3px);
+	}
+
+	/* ---------------------------------- */
+	/*  Visual column                     */
+	/* ---------------------------------- */
+	.hero-visual {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: fadeInUp 0.7s ease 0.15s both;
+	}
+
+	.hero-logo {
+		width: 100%;
+		max-width: 420px;
+		height: auto;
+		object-fit: contain;
+	}
+
+	/* ---------------------------------- */
+	/*  Responsive                        */
+	/* ---------------------------------- */
+	@media (max-width: 1024px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			text-align: center;
+		}
+
+		.hero-visual {
+			order: -1;
+		}
+
+		.hero-logo {
+			max-width: 280px;
+		}
+
+		.hero-content {
+			align-items: center;
+		}
+
+		.hero-description {
+			max-width: 55ch;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-inner {
+			padding: 7rem 1.5rem 3rem;
+		}
+
+		.hero-logo {
+			max-width: 200px;
+		}
+
+		.hero-label::before {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-label,
+		.hero-heading,
+		.hero-description,
+		.hero-cta,
+		.hero-visual {
+			animation: none;
+		}
+	}
+</style>

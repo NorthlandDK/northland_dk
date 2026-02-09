@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Approach from '../components/Approach.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout title="Northland Advice — Strategisk Rådgivning">
+	<Hero />
+	<About />
+	<Services />
+	<Approach />
+	<Contact />
+</Layout>
+
+<script>
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.15 },
+	);
+
+	document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

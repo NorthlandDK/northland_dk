@@ -1,0 +1,206 @@
+---
+const services = [
+	{
+		number: '01',
+		title: 'Foredrag og seminarer',
+		description:
+			'Forskningsbaserede keynotes for bestyrelser, ledelser og konferencer om AI i organisationer — hvad det kræver af strategi, governance og ledelse.',
+		format: '60–90 minutter · Keynote eller seminar',
+	},
+	{
+		number: '02',
+		title: 'Diagnostisk rådgivning',
+		description:
+			'Kortlægning af opgaver og beslutninger i organisationen for at identificere, hvor AI-agenter reelt skaber værdi — og hvor de ikke gør.',
+		format: '2–4 uger · Analyse og workshop',
+	},
+	{
+		number: '03',
+		title: 'AI-workshops',
+		description:
+			'Hands-on workshops hvor teams arbejder med AI-værktøjer på egne opgaver — fra promptdesign til vurdering af output og implementering.',
+		format: 'Halv- eller heldag · Teambaseret',
+	},
+];
+---
+
+<section class="services" id="services">
+	<div class="services-inner">
+		<div class="services-header reveal">
+			<span class="section-label">Ydelser</span>
+			<h2 class="services-heading">Hvad vi tilbyder</h2>
+			<p class="services-intro">
+				Rådgivning der bygger bro mellem forskning og praksis — tilpasset
+				organisationer, der tager strategi og governance alvorligt.
+			</p>
+		</div>
+
+		<div class="services-grid">
+			{services.map((service, i) => (
+				<div class="service-card reveal" style={`--reveal-delay: ${i * 0.1}s`}>
+					<span class="service-number" aria-hidden="true">{service.number}</span>
+					<div class="service-body">
+						<h3 class="service-title">{service.title}</h3>
+						<p class="service-description">{service.description}</p>
+					</div>
+					<span class="service-format">{service.format}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ---------------------------------- */
+	/*  Section                           */
+	/* ---------------------------------- */
+	.services {
+		background-color: #f0ece6;
+	}
+
+	.services-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Header                            */
+	/* ---------------------------------- */
+	.services-header {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		margin-bottom: 4rem;
+		max-width: 520px;
+	}
+
+	.services-heading {
+		font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+		color: var(--color-forest-deep);
+		letter-spacing: -0.015em;
+	}
+
+	.services-intro {
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		color: var(--color-text-light);
+	}
+
+	/* ---------------------------------- */
+	/*  Grid                              */
+	/* ---------------------------------- */
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Card                              */
+	/* ---------------------------------- */
+	.service-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: 2.5rem 2rem 2rem;
+		background-color: var(--color-white);
+		border-radius: 6px;
+		border: 1px solid rgba(15, 46, 36, 0.06);
+		overflow: hidden;
+		box-shadow: 0 0 0 rgba(15, 46, 36, 0);
+		transition: box-shadow 0.35s ease;
+	}
+
+	/* Gold top border — animates in on hover */
+	.service-card::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background-color: var(--color-gold);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.4s ease;
+	}
+
+	.service-card:hover {
+		box-shadow: 0 8px 30px rgba(15, 46, 36, 0.08);
+	}
+
+	.service-card:hover::after {
+		transform: scaleX(1);
+	}
+
+	/* ---------------------------------- */
+	/*  Card internals                    */
+	/* ---------------------------------- */
+	.service-number {
+		font-family: var(--font-heading);
+		font-size: 3.5rem;
+		font-weight: 700;
+		line-height: 1;
+		color: var(--color-mist);
+		margin-bottom: 1.25rem;
+		user-select: none;
+	}
+
+	.service-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		flex: 1;
+	}
+
+	.service-title {
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--color-forest-deep);
+		line-height: 1.25;
+	}
+
+	.service-description {
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: var(--color-text-light);
+	}
+
+	.service-format {
+		display: block;
+		margin-top: 1.75rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-mist);
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-text-muted);
+		letter-spacing: 0.01em;
+	}
+
+	/* ---------------------------------- */
+	/*  Responsive                        */
+	/* ---------------------------------- */
+	@media (max-width: 1024px) {
+		.services-grid {
+			grid-template-columns: 1fr;
+			max-width: 520px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.services-inner {
+			padding: 4rem 1.5rem;
+		}
+
+		.services-header {
+			margin-bottom: 3rem;
+		}
+
+		.services-grid {
+			gap: 1.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,238 @@
+---
+import logoSrc from '../assets/logo.png';
+
+const links = [
+	{ label: 'Om', href: '#about' },
+	{ label: 'Ydelser', href: '#services' },
+	{ label: 'Tilgang', href: '#approach' },
+	{ label: 'Kontakt', href: '#contact' },
+];
+---
+
+<nav class="nav" aria-label="Primær navigation">
+	<div class="nav-inner">
+		<a href={import.meta.env.BASE_URL} class="nav-logo" aria-label="Northland Advice — Forside">
+			<img src={logoSrc.src} alt="Northland Advice" width="160" height="40" />
+		</a>
+
+		<ul class="nav-links" id="nav-links">
+			{links.map((link) => (
+				<li>
+					<a href={link.href} class="nav-link">{link.label}</a>
+				</li>
+			))}
+		</ul>
+
+		<button
+			class="nav-toggle"
+			id="nav-toggle"
+			type="button"
+			aria-expanded="false"
+			aria-controls="nav-links"
+			aria-label="Åbn menu"
+		>
+			<span class="nav-toggle-bar"></span>
+			<span class="nav-toggle-bar"></span>
+			<span class="nav-toggle-bar"></span>
+		</button>
+	</div>
+</nav>
+
+<script>
+	const nav = document.querySelector('.nav') as HTMLElement;
+	const toggle = document.getElementById('nav-toggle') as HTMLButtonElement;
+	const links = document.getElementById('nav-links') as HTMLElement;
+
+	// Scroll: transparent → solid
+	function onScroll() {
+		nav.classList.toggle('scrolled', window.scrollY > 20);
+	}
+	window.addEventListener('scroll', onScroll, { passive: true });
+	onScroll();
+
+	// Mobile menu
+	toggle.addEventListener('click', () => {
+		const open = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!open));
+		toggle.setAttribute('aria-label', open ? 'Åbn menu' : 'Luk menu');
+		links.classList.toggle('open');
+		nav.classList.toggle('menu-open');
+	});
+
+	// Close menu on anchor click
+	links.querySelectorAll('a').forEach((a) => {
+		a.addEventListener('click', () => {
+			toggle.setAttribute('aria-expanded', 'false');
+			toggle.setAttribute('aria-label', 'Åbn menu');
+			links.classList.remove('open');
+			nav.classList.remove('menu-open');
+		});
+	});
+</script>
+
+<style>
+	/* ---------------------------------- */
+	/*  Nav bar                           */
+	/* ---------------------------------- */
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.nav.scrolled,
+	.nav.menu-open {
+		background-color: var(--color-white);
+		box-shadow: 0 1px 8px rgba(15, 46, 36, 0.06);
+	}
+
+	.nav-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1.25rem 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Logo                              */
+	/* ---------------------------------- */
+	.nav-logo img {
+		height: 2rem;
+		width: auto;
+	}
+
+	/* ---------------------------------- */
+	/*  Links                             */
+	/* ---------------------------------- */
+	.nav-links {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	.nav-link {
+		position: relative;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		color: var(--color-forest);
+		transition: color 0.2s ease;
+	}
+
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 1.5px;
+		background-color: var(--color-gold);
+		transition: width 0.3s ease;
+	}
+
+	.nav-link:hover {
+		color: var(--color-forest-deep);
+	}
+
+	.nav-link:hover::after {
+		width: 100%;
+	}
+
+	/* ---------------------------------- */
+	/*  Hamburger                         */
+	/* ---------------------------------- */
+	.nav-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		width: 2rem;
+		height: 2rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+
+	.nav-toggle-bar {
+		display: block;
+		width: 100%;
+		height: 2px;
+		background-color: var(--color-forest);
+		border-radius: 1px;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	/* ---------------------------------- */
+	/*  Mobile                            */
+	/* ---------------------------------- */
+	@media (max-width: 768px) {
+		.nav-inner {
+			padding: 1rem 1.5rem;
+		}
+
+		.nav-toggle {
+			display: flex;
+		}
+
+		.nav-links {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			gap: 0;
+			background-color: var(--color-white);
+			box-shadow: 0 4px 12px rgba(15, 46, 36, 0.08);
+			padding: 0.5rem 2rem 1.5rem;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-0.5rem);
+			transition:
+				opacity 0.3s ease,
+				visibility 0.3s ease,
+				transform 0.3s ease;
+		}
+
+		.nav-links.open {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.nav-links li {
+			border-bottom: 1px solid var(--color-mist);
+		}
+
+		.nav-links li:last-child {
+			border-bottom: none;
+		}
+
+		.nav-link {
+			display: block;
+			padding: 0.875rem 0;
+			font-size: 1rem;
+		}
+
+		.nav-link::after {
+			display: none;
+		}
+	}
+</style>

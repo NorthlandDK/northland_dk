@@ -1,0 +1,164 @@
+---
+const points = [
+	{
+		title: 'Fra værktøjer til opgaver',
+		description:
+			'Vi starter ikke med software. Vi starter med de opgaver, organisationen skal løse — og finder derfra den rigtige teknologi.',
+	},
+	{
+		title: 'Fra effektivitet til strategi',
+		description:
+			'AI er ikke kun et spørgsmål om automatisering. Det er en strategisk kapabilitet, der kan ændre, hvordan I konkurrerer og skaber værdi.',
+	},
+	{
+		title: 'Fra ledelse til governance',
+		description:
+			'Bestyrelser og topledelser må forstå AI — ikke som et IT-projekt, men som et governance-ansvar med strategiske implikationer.',
+	},
+	{
+		title: 'Forankret i forskning',
+		description:
+			'Vores rådgivning bygger på årtiers forskning i strategi og organisationer — ikke på trends eller leverandørløfter.',
+	},
+];
+---
+
+<section class="approach" id="approach">
+	<div class="approach-inner">
+		<div class="approach-header reveal">
+			<span class="section-label">Tilgang</span>
+			<h2 class="approach-heading">
+				Ikke teknologi for<br />teknologiens skyld
+			</h2>
+			<p class="approach-intro">
+				AI handler ikke om værktøjer. Det handler om, hvordan organisationer
+				arbejder, beslutter og skaber værdi.
+			</p>
+		</div>
+
+		<div class="approach-grid">
+			{points.map((point, i) => (
+				<div class="approach-point reveal" style={`--reveal-delay: ${0.1 + i * 0.1}s`}>
+					<span class="point-dot" aria-hidden="true"></span>
+					<h3 class="point-title">{point.title}</h3>
+					<p class="point-description">{point.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ---------------------------------- */
+	/*  Section                           */
+	/* ---------------------------------- */
+	.approach {
+		position: relative;
+		background-color: var(--color-forest-deep);
+		overflow: hidden;
+	}
+
+	.approach::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse 70% 60% at 80% 20%,
+			rgba(42, 107, 82, 0.18) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
+	.approach-inner {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Header                            */
+	/* ---------------------------------- */
+	.approach-header {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		margin-bottom: 4rem;
+		max-width: 600px;
+	}
+
+	.approach-heading {
+		font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+		color: var(--color-white);
+		letter-spacing: -0.015em;
+	}
+
+	.approach-intro {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: var(--color-sage-light);
+	}
+
+	/* ---------------------------------- */
+	/*  Grid                              */
+	/* ---------------------------------- */
+	.approach-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem 5rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Point card                        */
+	/* ---------------------------------- */
+	.approach-point {
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
+	}
+
+	.point-dot {
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: var(--color-gold);
+		margin-bottom: 0.375rem;
+	}
+
+	.point-title {
+		font-family: var(--font-heading);
+		font-size: 1.375rem;
+		font-weight: 600;
+		color: var(--color-white);
+		line-height: 1.3;
+	}
+
+	.point-description {
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: var(--color-sage-light);
+		max-width: 42ch;
+	}
+
+	/* ---------------------------------- */
+	/*  Responsive                        */
+	/* ---------------------------------- */
+	@media (max-width: 1024px) {
+		.approach-grid {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.approach-inner {
+			padding: 4rem 1.5rem;
+		}
+
+		.approach-header {
+			margin-bottom: 3rem;
+		}
+	}
+</style>

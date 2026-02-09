@@ -1,0 +1,210 @@
+---
+const details = [
+	{ label: 'Email', value: 'md@northland.dk', href: 'mailto:md@northland.dk' },
+	{
+		label: 'LinkedIn',
+		value: 'linkedin.com/in/msdahl',
+		href: 'https://www.linkedin.com/in/msdahl',
+		external: true,
+	},
+	{ label: 'Beliggenhed', value: 'Aalborg, Danmark' },
+	{ label: 'CVR', value: 'Northland Advice' },
+];
+---
+
+<section class="contact" id="contact">
+	<div class="contact-inner">
+		<div class="contact-details reveal">
+			<span class="section-label">Kontakt</span>
+			<h2 class="contact-heading">Lad os tale sammen</h2>
+
+			<dl class="details-list">
+				{details.map((d) => (
+					<div class="detail">
+						<dt class="detail-label">{d.label}</dt>
+						<dd class="detail-value">
+							{d.href ? (
+								<a
+									href={d.href}
+									class="detail-link"
+									{...(d.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+								>
+									{d.value}
+								</a>
+							) : (
+								d.value
+							)}
+						</dd>
+					</div>
+				))}
+			</dl>
+		</div>
+
+		<div class="contact-text reveal" style="--reveal-delay: 0.15s">
+			<p>
+				Jeg arbejder med bestyrelser, direktioner og organisationer, der ønsker
+				at forstå og anvende AI med strategisk retning og ansvarlig governance.
+			</p>
+			<p>
+				Uanset om det handler om et foredrag, en bestyrelsesevaluering eller
+				længerevarende rådgivning — starter det altid med en samtale.
+			</p>
+			<a href="mailto:md@northland.dk" class="contact-cta">
+				Skriv en mail
+				<svg
+					class="contact-cta-arrow"
+					width="20"
+					height="20"
+					viewBox="0 0 20 20"
+					fill="none"
+					aria-hidden="true"
+				>
+					<path
+						d="M4 10h12m0 0l-4-4m4 4l-4 4"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* ---------------------------------- */
+	/*  Section                           */
+	/* ---------------------------------- */
+	.contact {
+		background-color: var(--color-cream);
+	}
+
+	.contact-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+	}
+
+	/* ---------------------------------- */
+	/*  Details column                    */
+	/* ---------------------------------- */
+	.contact-details {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.contact-heading {
+		font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+		color: var(--color-forest-deep);
+		letter-spacing: -0.015em;
+	}
+
+	.details-list {
+		display: flex;
+		flex-direction: column;
+		margin-top: 0.75rem;
+	}
+
+	.detail {
+		display: flex;
+		flex-direction: column;
+		gap: 0.125rem;
+		padding: 1rem 0;
+		border-bottom: 1px solid var(--color-mist);
+	}
+
+	.detail:first-child {
+		padding-top: 0;
+	}
+
+	.detail:last-child {
+		border-bottom: none;
+	}
+
+	.detail-label {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-text-muted);
+		letter-spacing: 0.02em;
+	}
+
+	.detail-value {
+		font-size: 1.0625rem;
+		color: var(--color-charcoal);
+	}
+
+	.detail-link {
+		color: var(--color-forest);
+		transition: color 0.2s ease;
+	}
+
+	.detail-link:hover {
+		color: var(--color-forest-deep);
+	}
+
+	/* ---------------------------------- */
+	/*  Text column                       */
+	/* ---------------------------------- */
+	.contact-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		padding-top: 0.25rem;
+	}
+
+	.contact-text p {
+		font-size: 1.0625rem;
+		line-height: 1.75;
+		color: var(--color-text-light);
+	}
+
+	.contact-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		align-self: flex-start;
+		margin-top: 0.5rem;
+		padding: 0.875rem 2rem;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--color-white);
+		background-color: var(--color-forest);
+		border-radius: 4px;
+		transition: background-color 0.25s ease, transform 0.25s ease;
+	}
+
+	.contact-cta:hover {
+		background-color: var(--color-forest-deep);
+		transform: translateY(-1px);
+	}
+
+	.contact-cta-arrow {
+		transition: transform 0.25s ease;
+	}
+
+	.contact-cta:hover .contact-cta-arrow {
+		transform: translateX(3px);
+	}
+
+	/* ---------------------------------- */
+	/*  Responsive                        */
+	/* ---------------------------------- */
+	@media (max-width: 1024px) {
+		.contact-inner {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.contact-inner {
+			padding: 4rem 1.5rem;
+		}
+	}
+</style>
