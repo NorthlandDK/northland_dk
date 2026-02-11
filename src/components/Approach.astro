@@ -45,6 +45,13 @@ const points = [
 				</div>
 			))}
 		</div>
+
+		<div class="collaboration reveal">
+			<span class="section-label">Samarbejde</span>
+			<p class="collaboration-text">
+				I konkrete forløb samarbejder jeg med udvalgte specialister, når det styrker implementering og forankring. Jeg arbejder blandt andet med <a href="https://www.jimminormann.com/" target="_blank" rel="noopener noreferrer">Jimmi Normann Kristiansen</a>, ekspert i innovation management, som rådgiver globale virksomheder om transformation.
+			</p>
+		</div>
 	</div>
 </section>
 
@@ -143,6 +150,32 @@ const points = [
 	}
 
 	/* ---------------------------------- */
+	/*  Collaboration note                */
+	/* ---------------------------------- */
+	.collaboration {
+		margin-top: 3rem;
+		max-width: 600px;
+	}
+
+	.collaboration-text {
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: var(--color-mist);
+		margin-top: 0.75rem;
+	}
+
+	.collaboration-text a {
+		color: var(--color-sage);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		transition: color 0.2s ease;
+	}
+
+	.collaboration-text a:hover {
+		color: var(--color-white);
+	}
+
+	/* ---------------------------------- */
 	/*  Responsive                        */
 	/* ---------------------------------- */
 	@media (max-width: 1024px) {
@@ -159,6 +192,10 @@ const points = [
 
 		.approach-header {
 			margin-bottom: 3rem;
+		}
+
+		.collaboration {
+			margin-top: 2rem;
 		}
 	}
 </style>
